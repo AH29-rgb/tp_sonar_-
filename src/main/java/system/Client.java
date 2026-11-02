@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class Client {
 
-    //private static final Logger log=Logger.getLogger(Client.class);
 
 	private String NomClient;
 	private int NumClient;
