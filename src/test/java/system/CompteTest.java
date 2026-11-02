@@ -21,8 +21,8 @@ class CompteTest {
 	Compte c2=new Compte(d2, 2, 2000);
 	
 	Client cli=new Client("zakrani", 11, "abdelali");
-	cli.m_Compte.add(c1);
-	cli.m_Compte.add(c2);
+	cli.getMCompte().add(c1);
+	cli.getMCompte().add(c2);
 	cli.afficherClient();
 	c1.crediter(500);
 	cli.afficherClient();
