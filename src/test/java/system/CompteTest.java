@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
 
@@ -116,6 +118,19 @@ class CompteTest {
 		cli.closeFileHandler();
 		cli.afficherClient();
 
+		assertTrue(cli.getMCompte().isEmpty());
+	}
+
+	@Test
+	void testAfficherLoggerDesactive() {
+		Logger logger = Logger.getLogger(Client.class.getName());
+		Level ancienNiveau = logger.getLevel();
+		logger.setLevel(Level.OFF);
+
+		Client cli = new Client("zakrani", 11, "abdelali");
+		cli.afficherClient();
+
+		logger.setLevel(ancienNiveau);
 		assertTrue(cli.getMCompte().isEmpty());
 	}
 }
