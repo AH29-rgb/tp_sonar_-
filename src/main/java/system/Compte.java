@@ -2,6 +2,11 @@ package system;
 
 import java.util.Date;
 
+/**
+ * @author zakrani
+ * @version 1.0
+ * @created 25-nov.-2017 21:29:54
+ */
 public class Compte {
 
 	private Date dateCreation;
@@ -9,6 +14,7 @@ public class Compte {
 	private float solde = 0;
 
 	public Compte() {
+		// Constructeur par défaut volontairement vide
 	}
 
 	public Compte(Date dateCreation, int numCompte, float solde) {
@@ -19,22 +25,16 @@ public class Compte {
 
 	@Override
 	public String toString() {
-		return "Compte cree le " + dateCreation + ", numCompte=" + numCompte + ", solde=" + solde;
+		return "Compte créé le " + dateCreation + ", NumCompte=" + numCompte + ", Solde=" + solde;
 	}
 
+	/**
+	 * @param newVal montant à débiter (ignoré si le solde est insuffisant)
+	 */
 	public void debiter(float newVal) {
 		if (solde >= newVal) {
 			setSolde(solde - newVal);
 		}
-	}
-
-	public void crediter(float newVal) {
-		setSolde(solde + newVal);
-	}
-
-	public void virement(Compte c, float mnt) {
-		debiter(mnt);
-		c.crediter(mnt);
 	}
 
 	public Date getDateCreation() {
@@ -61,5 +61,17 @@ public class Compte {
 		if (newVal >= 0) {
 			solde = newVal;
 		}
+	}
+
+	/**
+	 * @param newVal montant à créditer
+	 */
+	public void crediter(float newVal) {
+		setSolde(solde + newVal);
+	}
+
+	public void virement(Compte c, float mnt) {
+		debiter(mnt);
+		c.crediter(mnt);
 	}
 }
